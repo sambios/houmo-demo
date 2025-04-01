@@ -2,12 +2,15 @@ cmake_minimum_required(VERSION 3.15.3)
 project(houmo-demo)
 
 # set global variables
-set(WS /home/yuan)
-
+set(WS $ENV{HOME})
 set(CMAKE_BUILD_TYPE Debug)
 
-set(TCIM_RUNTIME_PATH ${WS}/houmo/work/houmo-tcim-runtime)
+set(TCIM_RUNTIME_PATH $ENV{TCIM_RUNTIME_PATH})
+
 set(TOP ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 find_package(OpenCV REQUIRED)
 
@@ -29,5 +32,5 @@ else ()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif ()
 
-add_subdirectory(yolov5)
-add_subdirectory(yolov8)
+add_subdirectory(yolov5 yolov5.out)
+add_subdirectory(yolov8 yolov8.out)

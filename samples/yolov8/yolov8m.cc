@@ -25,6 +25,8 @@ namespace fs = std::filesystem;
 #include "threads.hpp"
 #include "utils.hpp"
 
+//#define HM_VERSION 10400
+#define HM_VERSION 20100
 
 const std::vector<std::string> common_classes = {"person", "bicycle", "car", "motorcycle", "airplane", "bus", "train",
                                                  "truck", "boat", "traffic light",
@@ -236,9 +238,13 @@ int main(int argc, char *argv[]) {
     // 7. get output
     std::vector<tcim::Tensor> output_blobs;
     for (auto &output : output_map) {
+#if HM_VERSION < 20000
+	module.GetOutput(output.first, output.second);
+#else
         auto output_tensor = module.GetOutput(output.first);
         output_tensor.CastTo(output.second);
         output_blobs.push_back(output.second);
+#endif
     }
 
     // 8. postprocess

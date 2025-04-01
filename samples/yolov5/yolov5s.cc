@@ -14,6 +14,11 @@ namespace fs = std::experimental::filesystem;
 namespace fs = std::filesystem;
 #endif
 
+//1.5.0
+//#define HM_VERSION 15000
+//2.1.0
+#define HM_VERSION 20100
+
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/opencv.hpp>
@@ -313,8 +318,12 @@ int main(int argc, char *argv[]) {
 
     // 7. get output
     for (auto &output : output_map) {
+#if HM_VERSION < 20000
+	module.GetOutput(output.first, output.second);
+#else
         auto output_tensor = module.GetOutput(output.first);
         output_tensor.CastTo(output.second);
+#endif
     }
 
     // 8. postprocess
