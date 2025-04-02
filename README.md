@@ -16,7 +16,7 @@
 下载完成之后，安装驱动可以执行如下指令：
 
 ```shell
-sudo bash ./houmo_drv_v2.1.0_ubuntu2004_x86_64.run install all 
+sudo bash ./houmo_drv_v2.1.0_ubuntu2004_aarch64.run install all 
 tar zxf LM_VPU_fw_v2.1.0.tar.gz 
 cd LM_VPU_fw 
 # 假设你的设备是/dev/dri/renderD128​
