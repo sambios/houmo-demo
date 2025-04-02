@@ -17,13 +17,13 @@
 
 ```shell
 sudo bash ./houmo_drv_v2.1.0_ubuntu2004_x86_64.run install all 
-tar zxf M30_LM_fw_v2.1.0.tar.gz 
-cd M30_LM_fw 
+tar zxf LM_VPU_fw_v2.1.0.tar.gz 
+cd LM_VPU_fw 
 # 假设你的设备是/dev/dri/renderD128​
-# 更新bootloader/kernel
-sudo /usr/local/houmo-sdk/tools/hmupdate-tools-v3.2.7-linux-x86_64/hmupdate -f ./loader.img -d /dev/dri/renderD128
+# 对于M30, loader.img 先不要升级。
+# sudo hmupdate-tools-v3.2.7-linux-aarch64/hmupdate -f ./loader.img -d /dev/dri/renderD130
 # 更新firmware​
-sudo /usr/local/houmo-sdk/tools/hmupdate-tools-v3.2.7-linux-x86_64/hmupdate -f ./boot.img -d /dev/dri/renderD128
+sudo hmupdate-tools-v3.2.7-linux-aarch64/hmupdate -f ./boot.img -d /dev/dri/renderD130
 # 烧写完成之后，建议将机器重新启动
 ```
 
