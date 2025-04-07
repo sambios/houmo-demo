@@ -34,3 +34,4 @@ endif ()
 
 add_subdirectory(yolov5 yolov5.out)
 add_subdirectory(yolov8 yolov8.out)
+add_subdirectory(onnx onnx.out)
